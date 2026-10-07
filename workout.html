@@ -63,13 +63,24 @@
 
         function completeWorkout() {
 
+            let workouts =
+                Number(localStorage.getItem("workouts")) || 0;
+
+            workouts++;
+
+            localStorage.setItem(
+                "workouts",
+                workouts
+            );
+
             localStorage.setItem(
                 "workoutCompleted",
                 "true"
             );
 
             document.getElementById("message").textContent =
-                "🔥 Workout completed! Great job!";
+                "🔥 Workout completed! Total: " +
+                workouts;
 
         }
 
@@ -77,4 +88,4 @@
 
 </body>
 
-            </html>
+</html>
