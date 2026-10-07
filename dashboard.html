@@ -21,8 +21,6 @@
         </p>
 
 
-        <!-- QUICK STATS -->
-
         <div class="day">
 
             <h2>📊 QUICK STATS</h2>
@@ -50,8 +48,6 @@
         </div>
 
 
-        <!-- PROGRAMS -->
-
         <a class="program" href="programs.html">
             🏋️ MY PROGRAMS
             <br>
@@ -60,8 +56,6 @@
             </small>
         </a>
 
-
-        <!-- WORKOUT -->
 
         <a class="program" href="workout.html">
             📅 MY WORKOUT
@@ -72,8 +66,6 @@
         </a>
 
 
-        <!-- PROGRESS -->
-
         <a class="program" href="progress.html">
             📊 MY PROGRESS
             <br>
@@ -83,7 +75,14 @@
         </a>
 
 
-        <!-- PROFILE -->
+        <a class="program" href="nutrition.html">
+            🍽️ NUTRITION
+            <br>
+            <small>
+                Calories • Macros • Water
+            </small>
+        </a>
+
 
         <a class="program" href="profile.html">
             👤 MY PROFILE
@@ -93,8 +92,6 @@
             </small>
         </a>
 
-
-        <!-- CALCULATOR -->
 
         <a class="program" href="calculator.html">
             🧮 CALCULATOR
@@ -114,10 +111,6 @@
 
     <script>
 
-        // =========================
-        // LOAD DATA
-        // =========================
-
         const name =
             localStorage.getItem("name");
 
@@ -130,177 +123,4 @@
 
         const goalWeight =
             Number(
-                localStorage.getItem("goalWeight")
-            );
-
-
-        const startingWeight =
-            Number(
-                localStorage.getItem(
-                    "startingWeight"
-                )
-            );
-
-
-        const workouts =
-            Number(
-                localStorage.getItem(
-                    "workouts"
-                )
-            ) || 0;
-
-
-        // =========================
-        // WELCOME
-        // =========================
-
-        if (name) {
-
-            document.getElementById(
-                "welcome"
-            ).textContent =
-                "Welcome back, " +
-                name +
-                " 💪🔥";
-
-        }
-
-
-        // =========================
-        // CURRENT WEIGHT
-        // =========================
-
-        if (weight > 0) {
-
-            document.getElementById(
-                "weight"
-            ).textContent =
-                "Weight: " +
-                weight +
-                " kg";
-
-        }
-
-
-        // =========================
-        // GOAL
-        // =========================
-
-        if (goalWeight > 0) {
-
-            document.getElementById(
-                "goal"
-            ).textContent =
-                "Goal: " +
-                goalWeight +
-                " kg";
-
-        }
-
-
-        // =========================
-        // REMAINING
-        // =========================
-
-        if (
-            weight > 0 &&
-            goalWeight > 0
-        ) {
-
-            const remaining =
-                Math.max(
-                    0,
-                    weight - goalWeight
-                );
-
-
-            if (weight <= goalWeight) {
-
-                document.getElementById(
-                    "remaining"
-                ).textContent =
-                    "Remaining: Goal Reached! 🏆";
-
-            } else {
-
-                document.getElementById(
-                    "remaining"
-                ).textContent =
-                    "Remaining: " +
-                    remaining.toFixed(1) +
-                    " kg";
-
-            }
-
-        }
-
-
-        // =========================
-        // PROGRESS
-        // =========================
-
-        if (
-            startingWeight > 0 &&
-            weight > 0 &&
-            goalWeight > 0
-        ) {
-
-            const total =
-                startingWeight -
-                goalWeight;
-
-
-            const lost =
-                startingWeight -
-                weight;
-
-
-            let progress = 0;
-
-
-            if (total > 0) {
-
-                progress =
-                    (
-                        lost /
-                        total
-                    ) * 100;
-
-            }
-
-
-            const safeProgress =
-                Math.max(
-                    0,
-                    Math.min(
-                        100,
-                        progress
-                    )
-                );
-
-
-            document.getElementById(
-                "progress"
-            ).textContent =
-                "Progress: " +
-                safeProgress.toFixed(1) +
-                "%";
-
-        }
-
-
-        // =========================
-        // WORKOUTS
-        // =========================
-
-        document.getElementById(
-            "workouts"
-        ).textContent =
-            "Workouts: " +
-            workouts;
-
-    </script>
-
-</body>
-
-    </html>
+                localStorage.get
