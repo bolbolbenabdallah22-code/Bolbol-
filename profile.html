@@ -58,6 +58,44 @@
             >
 
 
+            <select id="gender">
+
+                <option value="male">
+                    Male
+                </option>
+
+                <option value="female">
+                    Female
+                </option>
+
+            </select>
+
+
+            <select id="activity">
+
+                <option value="1.2">
+                    Sedentary
+                </option>
+
+                <option value="1.375">
+                    Light Activity
+                </option>
+
+                <option value="1.55">
+                    Moderate Activity
+                </option>
+
+                <option value="1.725">
+                    Very Active
+                </option>
+
+                <option value="1.9">
+                    Extremely Active
+                </option>
+
+            </select>
+
+
             <button onclick="saveProfile()">
                 💾 SAVE PROFILE
             </button>
@@ -84,144 +122,4 @@
 
         <a class="back" href="dashboard.html">
             ← BACK
-        </a>
-
-    </div>
-
-
-    <script>
-
-        // Load saved information
-
-        document.getElementById("name").value =
-            localStorage.getItem("name") || "";
-
-        document.getElementById("age").value =
-            localStorage.getItem("age") || "";
-
-        document.getElementById("height").value =
-            localStorage.getItem("height") || "";
-
-        document.getElementById("weight").value =
-            localStorage.getItem("weight") || "";
-
-        document.getElementById("goalWeight").value =
-            localStorage.getItem("goalWeight") || "";
-
-
-        // Show starting weight
-
-        const savedStartingWeight =
-            localStorage.getItem("startingWeight");
-
-
-        if (savedStartingWeight) {
-
-            document.getElementById(
-                "startingWeight"
-            ).textContent =
-                savedStartingWeight +
-                " kg";
-
-        }
-
-
-        function saveProfile() {
-
-            const name =
-                document.getElementById("name").value;
-
-            const age =
-                document.getElementById("age").value;
-
-            const height =
-                document.getElementById("height").value;
-
-            const weight =
-                document.getElementById("weight").value;
-
-            const goalWeight =
-                document.getElementById("goalWeight").value;
-
-
-            if (
-                !name ||
-                !age ||
-                !height ||
-                !weight ||
-                !goalWeight
-            ) {
-
-                alert(
-                    "Please enter all information."
-                );
-
-                return;
-
-            }
-
-
-            // Save profile
-
-            localStorage.setItem(
-                "name",
-                name
-            );
-
-            localStorage.setItem(
-                "age",
-                age
-            );
-
-            localStorage.setItem(
-                "height",
-                height
-            );
-
-            localStorage.setItem(
-                "weight",
-                weight
-            );
-
-            localStorage.setItem(
-                "goalWeight",
-                goalWeight
-            );
-
-
-            // Save starting weight only once
-
-            if (
-                !localStorage.getItem(
-                    "startingWeight"
-                )
-            ) {
-
-                localStorage.setItem(
-                    "startingWeight",
-                    weight
-                );
-
-            }
-
-
-            document.getElementById(
-                "startingWeight"
-            ).textContent =
-                localStorage.getItem(
-                    "startingWeight"
-                ) +
-                " kg";
-
-
-            alert(
-                "Profile saved successfully! 💪🔥"
-            );
-
-        }
-
-    </script>
-
-</body>
-
-    </html>
+        </
