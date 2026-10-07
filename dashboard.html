@@ -23,7 +23,7 @@
 
         <div class="day">
 
-            <h2>👤 MY STATUS</h2>
+            <h2>📊 QUICK STATS</h2>
 
             <p id="weight">
                 Weight: -
@@ -31,6 +31,10 @@
 
             <p id="goal">
                 Goal: -
+            </p>
+
+            <p id="progress">
+                Progress: -
             </p>
 
             <p id="workouts">
@@ -78,20 +82,37 @@
             localStorage.getItem("name");
 
         const weight =
-            localStorage.getItem("weight");
+            Number(
+                localStorage.getItem("weight")
+            );
 
         const goalWeight =
-            localStorage.getItem("goalWeight");
+            Number(
+                localStorage.getItem("goalWeight")
+            );
+
+        const startingWeight =
+            Number(
+                localStorage.getItem(
+                    "startingWeight"
+                )
+            );
 
         const workouts =
-            Number(localStorage.getItem("workouts")) || 0;
+            Number(
+                localStorage.getItem(
+                    "workouts"
+                )
+            ) || 0;
 
 
-        // Welcome
+        // WELCOME
 
         if (name) {
 
-            document.getElementById("welcome").textContent =
+            document.getElementById(
+                "welcome"
+            ).textContent =
                 "Welcome back, " +
                 name +
                 " 💪";
@@ -99,11 +120,13 @@
         }
 
 
-        // Weight
+        // WEIGHT
 
-        if (weight) {
+        if (weight > 0) {
 
-            document.getElementById("weight").textContent =
+            document.getElementById(
+                "weight"
+            ).textContent =
                 "Weight: " +
                 weight +
                 " kg";
@@ -111,11 +134,13 @@
         }
 
 
-        // Goal
+        // GOAL
 
-        if (goalWeight) {
+        if (goalWeight > 0) {
 
-            document.getElementById("goal").textContent =
+            document.getElementById(
+                "goal"
+            ).textContent =
                 "Goal: " +
                 goalWeight +
                 " kg";
@@ -123,9 +148,63 @@
         }
 
 
-        // Workouts
+        // PROGRESS
 
-        document.getElementById("workouts").textContent =
+        if (
+            startingWeight > 0 &&
+            weight > 0 &&
+            goalWeight > 0
+        ) {
+
+            const total =
+                startingWeight -
+                goalWeight;
+
+
+            const lost =
+                startingWeight -
+                weight;
+
+
+            let progress = 0;
+
+
+            if (total > 0) {
+
+                progress =
+                    (
+                        lost /
+                        total
+                    ) * 100;
+
+            }
+
+
+            const safeProgress =
+                Math.max(
+                    0,
+                    Math.min(
+                        100,
+                        progress
+                    )
+                );
+
+
+            document.getElementById(
+                "progress"
+            ).textContent =
+                "Progress: " +
+                safeProgress.toFixed(1) +
+                "%";
+
+        }
+
+
+        // WORKOUTS
+
+        document.getElementById(
+            "workouts"
+        ).textContent =
             "Workouts: " +
             workouts;
 
@@ -133,4 +212,4 @@
 
 </body>
 
-            </html>
+</html>
