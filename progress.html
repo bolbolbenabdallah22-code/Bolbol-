@@ -36,6 +36,10 @@
 
             <h2>⚖️ WEIGHT</h2>
 
+            <p id="startingWeight">
+                Starting Weight: -
+            </p>
+
             <p id="currentWeight">
                 Current Weight: -
             </p>
@@ -45,7 +49,7 @@
             </p>
 
             <p id="difference">
-                Weight Difference: -
+                Remaining: -
             </p>
 
         </div>
@@ -58,6 +62,7 @@
             <p id="progressPercent">
                 Progress: -
             </p>
+
 
             <div style="
                 width: 100%;
@@ -85,15 +90,21 @@
 
             <h2>🔥 BODY & CALORIES</h2>
 
-            <p id="bmi">BMI: -</p>
+            <p id="bmi">
+                BMI: -
+            </p>
 
             <p id="bmiCategory">
                 Category: -
             </p>
 
-            <p id="bmr">BMR: -</p>
+            <p id="bmr">
+                BMR: -
+            </p>
 
-            <p id="tdee">TDEE: -</p>
+            <p id="tdee">
+                TDEE: -
+            </p>
 
             <p id="calories">
                 Fat Loss Calories: -
@@ -131,27 +142,47 @@
         const height =
             Number(localStorage.getItem("height"));
 
+        const startingWeight =
+            Number(
+                localStorage.getItem(
+                    "startingWeight"
+                )
+            );
+
         const weight =
-            Number(localStorage.getItem("weight"));
+            Number(
+                localStorage.getItem("weight")
+            );
 
         const goalWeight =
-            Number(localStorage.getItem("goalWeight"));
+            Number(
+                localStorage.getItem("goalWeight")
+            );
 
         const gender =
-            localStorage.getItem("gender") || "male";
+            localStorage.getItem("gender")
+            || "male";
 
         const activity =
-            Number(localStorage.getItem("activity")) || 1.2;
+            Number(
+                localStorage.getItem("activity")
+            )
+            || 1.2;
 
         const workouts =
-            Number(localStorage.getItem("workouts")) || 0;
+            Number(
+                localStorage.getItem("workouts")
+            )
+            || 0;
 
 
         // PROFILE
 
         if (name) {
 
-            document.getElementById("name").textContent =
+            document.getElementById(
+                "name"
+            ).textContent =
                 name;
 
         }
@@ -159,15 +190,20 @@
 
         if (age > 0) {
 
-            document.getElementById("age").textContent =
-                "Age: " + age;
+            document.getElementById(
+                "age"
+            ).textContent =
+                "Age: " +
+                age;
 
         }
 
 
         if (height > 0) {
 
-            document.getElementById("height").textContent =
+            document.getElementById(
+                "height"
+            ).textContent =
                 "Height: " +
                 height +
                 " cm";
@@ -177,9 +213,23 @@
 
         // WEIGHT
 
+        if (startingWeight > 0) {
+
+            document.getElementById(
+                "startingWeight"
+            ).textContent =
+                "Starting Weight: " +
+                startingWeight +
+                " kg";
+
+        }
+
+
         if (weight > 0) {
 
-            document.getElementById("currentWeight").textContent =
+            document.getElementById(
+                "currentWeight"
+            ).textContent =
                 "Current Weight: " +
                 weight +
                 " kg";
@@ -189,168 +239,7 @@
 
         if (goalWeight > 0) {
 
-            document.getElementById("goalWeight").textContent =
+            document.getElementById(
+                "goalWeight"
+            ).textContent =
                 "Goal Weight: " +
-                goalWeight +
-                " kg";
-
-        }
-
-
-        // PROGRESS
-
-        if (weight > 0 && goalWeight > 0) {
-
-            const difference =
-                weight - goalWeight;
-
-
-            document.getElementById("difference").textContent =
-                "Weight Difference: " +
-                difference.toFixed(1) +
-                " kg";
-
-
-            if (difference <= 0) {
-
-                document.getElementById("progressPercent").textContent =
-                    "Goal Reached! 🏆";
-
-                document.getElementById("progressBar").style.width =
-                    "100%";
-
-            } else {
-
-                const progress =
-                    ((weight - goalWeight) / weight) * 100;
-
-
-                const safeProgress =
-                    Math.max(
-                        0,
-                        Math.min(100, progress)
-                    );
-
-
-                document.getElementById("progressPercent").textContent =
-                    "Progress: " +
-                    safeProgress.toFixed(1) +
-                    "%";
-
-
-                document.getElementById("progressBar").style.width =
-                    safeProgress + "%";
-
-            }
-
-        }
-
-
-        // BMI + CALORIES
-
-        if (weight > 0 && height > 0 && age > 0) {
-
-            const heightMeters =
-                height / 100;
-
-
-            const bmi =
-                weight /
-                (heightMeters * heightMeters);
-
-
-            let category;
-
-
-            if (bmi < 18.5) {
-
-                category = "Underweight";
-
-            } else if (bmi < 25) {
-
-                category = "Normal Weight";
-
-            } else if (bmi < 30) {
-
-                category = "Overweight";
-
-            } else {
-
-                category = "Obesity";
-
-            }
-
-
-            document.getElementById("bmi").textContent =
-                "BMI: " +
-                bmi.toFixed(1);
-
-
-            document.getElementById("bmiCategory").textContent =
-                "Category: " +
-                category;
-
-
-            let bmr;
-
-
-            if (gender === "male") {
-
-                bmr =
-                    (10 * weight) +
-                    (6.25 * height) -
-                    (5 * age) +
-                    5;
-
-            } else {
-
-                bmr =
-                    (10 * weight) +
-                    (6.25 * height) -
-                    (5 * age) -
-                    161;
-
-            }
-
-
-            const tdee =
-                bmr * activity;
-
-
-            const calories =
-                tdee - 400;
-
-
-            document.getElementById("bmr").textContent =
-                "BMR: " +
-                Math.round(bmr) +
-                " kcal";
-
-
-            document.getElementById("tdee").textContent =
-                "TDEE: " +
-                Math.round(tdee) +
-                " kcal";
-
-
-            document.getElementById("calories").textContent =
-                "Fat Loss Calories: " +
-                Math.round(calories) +
-                " kcal";
-
-        }
-
-
-        // WORKOUTS
-
-        document.getElementById("workouts").textContent =
-            workouts +
-            (workouts === 1
-                ? " workout"
-                : " workouts");
-
-    </script>
-
-</body>
-
-    </html>
