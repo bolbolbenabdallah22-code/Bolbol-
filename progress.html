@@ -49,12 +49,11 @@
         const name = localStorage.getItem("name");
         const weight = localStorage.getItem("weight");
         const goal = localStorage.getItem("goal");
-        const workoutCompleted =
-            localStorage.getItem("workoutCompleted");
+        const workouts =
+    Number(localStorage.getItem("workouts")) || 0;
 
-        if (name) {
-            document.getElementById("name").textContent = name;
-        }
+document.getElementById("workouts").textContent =
+    workouts + (workouts === 1 ? " workout" : " workouts");
 
         if (weight) {
             document.getElementById("currentWeight").textContent =
