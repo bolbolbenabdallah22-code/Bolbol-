@@ -21,6 +21,8 @@
         </p>
 
 
+        <!-- QUICK STATS -->
+
         <div class="day">
 
             <h2>📊 QUICK STATS</h2>
@@ -31,6 +33,10 @@
 
             <p id="goal">
                 Goal: -
+            </p>
+
+            <p id="remaining">
+                Remaining: -
             </p>
 
             <p id="progress">
@@ -44,28 +50,58 @@
         </div>
 
 
+        <!-- PROGRAMS -->
+
         <a class="program" href="programs.html">
             🏋️ MY PROGRAMS
+            <br>
+            <small>
+                Strength • Kick Boxing • Fat Loss
+            </small>
         </a>
 
+
+        <!-- WORKOUT -->
 
         <a class="program" href="workout.html">
             📅 MY WORKOUT
+            <br>
+            <small>
+                Track today's training
+            </small>
         </a>
 
+
+        <!-- PROGRESS -->
 
         <a class="program" href="progress.html">
             📊 MY PROGRESS
+            <br>
+            <small>
+                Track your body progress
+            </small>
         </a>
 
+
+        <!-- PROFILE -->
 
         <a class="program" href="profile.html">
             👤 MY PROFILE
+            <br>
+            <small>
+                Personal information
+            </small>
         </a>
 
 
+        <!-- CALCULATOR -->
+
         <a class="program" href="calculator.html">
             🧮 CALCULATOR
+            <br>
+            <small>
+                BMR • TDEE • BMI
+            </small>
         </a>
 
 
@@ -78,18 +114,25 @@
 
     <script>
 
+        // =========================
+        // LOAD DATA
+        // =========================
+
         const name =
             localStorage.getItem("name");
+
 
         const weight =
             Number(
                 localStorage.getItem("weight")
             );
 
+
         const goalWeight =
             Number(
                 localStorage.getItem("goalWeight")
             );
+
 
         const startingWeight =
             Number(
@@ -97,6 +140,7 @@
                     "startingWeight"
                 )
             );
+
 
         const workouts =
             Number(
@@ -106,7 +150,9 @@
             ) || 0;
 
 
+        // =========================
         // WELCOME
+        // =========================
 
         if (name) {
 
@@ -115,12 +161,14 @@
             ).textContent =
                 "Welcome back, " +
                 name +
-                " 💪";
+                " 💪🔥";
 
         }
 
 
-        // WEIGHT
+        // =========================
+        // CURRENT WEIGHT
+        // =========================
 
         if (weight > 0) {
 
@@ -134,7 +182,9 @@
         }
 
 
+        // =========================
         // GOAL
+        // =========================
 
         if (goalWeight > 0) {
 
@@ -148,7 +198,46 @@
         }
 
 
+        // =========================
+        // REMAINING
+        // =========================
+
+        if (
+            weight > 0 &&
+            goalWeight > 0
+        ) {
+
+            const remaining =
+                Math.max(
+                    0,
+                    weight - goalWeight
+                );
+
+
+            if (weight <= goalWeight) {
+
+                document.getElementById(
+                    "remaining"
+                ).textContent =
+                    "Remaining: Goal Reached! 🏆";
+
+            } else {
+
+                document.getElementById(
+                    "remaining"
+                ).textContent =
+                    "Remaining: " +
+                    remaining.toFixed(1) +
+                    " kg";
+
+            }
+
+        }
+
+
+        // =========================
         // PROGRESS
+        // =========================
 
         if (
             startingWeight > 0 &&
@@ -200,7 +289,9 @@
         }
 
 
+        // =========================
         // WORKOUTS
+        // =========================
 
         document.getElementById(
             "workouts"
@@ -212,4 +303,4 @@
 
 </body>
 
-</html>
+    </html>
