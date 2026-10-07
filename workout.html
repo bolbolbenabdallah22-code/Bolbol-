@@ -18,40 +18,87 @@
 
         <p>Today's Training</p>
 
+
         <div class="day">
 
             <h2>🔥 CHEST + TRICEPS</h2>
 
-            <p>1. Bench Press</p>
+            <p>🏋️ Bench Press</p>
+
+            <input
+                id="bench"
+                type="number"
+                placeholder="Weight (kg)"
+            >
+
             <p>4 Sets × 10 Reps</p>
 
-            <p>2. Incline Dumbbell Press</p>
+
+            <p>🏋️ Incline Dumbbell Press</p>
+
+            <input
+                id="incline"
+                type="number"
+                placeholder="Weight (kg)"
+            >
+
             <p>3 Sets × 12 Reps</p>
 
-            <p>3. Cable Fly</p>
+
+            <p>🏋️ Cable Fly</p>
+
+            <input
+                id="fly"
+                type="number"
+                placeholder="Weight (kg)"
+            >
+
             <p>3 Sets × 15 Reps</p>
 
-            <p>4. Triceps Pushdown</p>
+
+            <p>💪 Triceps Pushdown</p>
+
+            <input
+                id="pushdown"
+                type="number"
+                placeholder="Weight (kg)"
+            >
+
             <p>3 Sets × 12 Reps</p>
 
-            <p>5. Overhead Triceps Extension</p>
+
+            <p>💪 Overhead Triceps Extension</p>
+
+            <input
+                id="extension"
+                type="number"
+                placeholder="Weight (kg)"
+            >
+
             <p>3 Sets × 12 Reps</p>
 
         </div>
+
 
         <div class="day">
 
             <h2>⏱️ REST</h2>
 
-            <p>Rest between sets: 60–120 seconds</p>
+            <p>
+                Rest between sets:
+                60–120 seconds
+            </p>
 
         </div>
+
 
         <button onclick="completeWorkout()">
             ✅ COMPLETE WORKOUT
         </button>
 
+
         <p id="message"></p>
+
 
         <a class="back" href="dashboard.html">
             ← BACK
@@ -59,24 +106,76 @@
 
     </div>
 
+
     <script>
 
+        // Load saved weights
+
+        document.getElementById("bench").value =
+            localStorage.getItem("bench") || "";
+
+        document.getElementById("incline").value =
+            localStorage.getItem("incline") || "";
+
+        document.getElementById("fly").value =
+            localStorage.getItem("fly") || "";
+
+        document.getElementById("pushdown").value =
+            localStorage.getItem("pushdown") || "";
+
+        document.getElementById("extension").value =
+            localStorage.getItem("extension") || "";
+
+
         function completeWorkout() {
+
+            // Save weights
+
+            localStorage.setItem(
+                "bench",
+                document.getElementById("bench").value
+            );
+
+            localStorage.setItem(
+                "incline",
+                document.getElementById("incline").value
+            );
+
+            localStorage.setItem(
+                "fly",
+                document.getElementById("fly").value
+            );
+
+            localStorage.setItem(
+                "pushdown",
+                document.getElementById("pushdown").value
+            );
+
+            localStorage.setItem(
+                "extension",
+                document.getElementById("extension").value
+            );
+
+
+            // Count workout
 
             let workouts =
                 Number(localStorage.getItem("workouts")) || 0;
 
             workouts++;
 
+
             localStorage.setItem(
                 "workouts",
                 workouts
             );
 
+
             localStorage.setItem(
                 "workoutCompleted",
                 "true"
             );
+
 
             document.getElementById("message").textContent =
                 "🔥 Workout completed! Total: " +
@@ -88,4 +187,4 @@
 
 </body>
 
-</html>
+    </html>
