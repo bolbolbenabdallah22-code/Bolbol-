@@ -16,31 +16,24 @@
 
         <h1>👤 MY PROFILE</h1>
 
-        <p>Your personal information</p>
+        <p>Enter your information</p>
 
         <div class="day">
-            <h2>NAME</h2>
-            <p>Enter your name</p>
-        </div>
 
-        <div class="day">
-            <h2>AGE</h2>
-            <p>Enter your age</p>
-        </div>
+            <input id="name" type="text" placeholder="Your Name">
 
-        <div class="day">
-            <h2>HEIGHT</h2>
-            <p>Enter your height</p>
-        </div>
+            <input id="age" type="number" placeholder="Age">
 
-        <div class="day">
-            <h2>WEIGHT</h2>
-            <p>Enter your weight</p>
-        </div>
+            <input id="height" type="number" placeholder="Height (cm)">
 
-        <div class="day">
-            <h2>GOAL</h2>
-            <p>Weight Loss / Muscle Gain / Fitness</p>
+            <input id="weight" type="number" placeholder="Weight (kg)">
+
+            <input id="goal" type="text" placeholder="Your Goal">
+
+            <button onclick="saveProfile()">
+                💾 SAVE PROFILE
+            </button>
+
         </div>
 
         <a class="back" href="dashboard.html">
@@ -48,6 +41,21 @@
         </a>
 
     </div>
+
+    <script>
+
+        function saveProfile() {
+
+            localStorage.setItem("name", document.getElementById("name").value);
+            localStorage.setItem("age", document.getElementById("age").value);
+            localStorage.setItem("height", document.getElementById("height").value);
+            localStorage.setItem("weight", document.getElementById("weight").value);
+            localStorage.setItem("goal", document.getElementById("goal").value);
+
+            alert("Profile saved successfully! 💪🔥");
+        }
+
+    </script>
 
 </body>
 
