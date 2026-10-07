@@ -5,62 +5,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Programs - Coach Bilel</title>
-<link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: white;
-            text-align: center;
-        }
+    <title>My Profile - Coach Bilel</title>
 
-        .container {
-            padding: 50px 20px;
-        }
-
-        h1 {
-            font-size: 32px;
-        }
-
-        .program {
-            display: block;
-            width: 90%;
-            max-width: 350px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #222;
-            color: white;
-            text-decoration: none;
-            border-radius: 15px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div class="container">
 
-        <h1>COACH BILEL 💪</h1>
+        <h1>👤 MY PROFILE</h1>
 
-        <p>Choose your program</p>
+        <p>Enter your information</p>
 
-        <a class="program" href="strength.html">
-            💪 STRENGTH
-        </a>
+        <div class="day">
 
-        <a class="program" href="kickboxing.html">
-    🥊 KICK BOXING
-        </a>
+            <input
+                id="name"
+                type="text"
+                placeholder="Your Name"
+            >
 
-        <a class="program" href="fatloss.html">
-    🔥 FAT LOSS
+            <input
+                id="age"
+                type="number"
+                placeholder="Age"
+            >
+
+            <input
+                id="height"
+                type="number"
+                placeholder="Height (cm)"
+            >
+
+            <input
+                id="weight"
+                type="number"
+                step="0.1"
+                placeholder="Current Weight (kg)"
+            >
+
+            <input
+                id="goalWeight"
+                type="number"
+                step="0.1"
+                placeholder="Goal Weight (kg)"
+            >
+
+            <button onclick="saveProfile()">
+                💾 SAVE PROFILE
+            </button>
+
+        </div>
+
+        <a class="back" href="dashboard.html">
+            ← BACK
         </a>
 
     </div>
+
+    <script>
+
+        // Load saved information
+
+        document.getElementById("name").value =
+            localStorage.getItem("name") || "";
+
+        document.getElementById("age").value =
+            localStorage.getItem("age") || "";
+
+        document.getElementById("height").value =
+            localStorage.getItem("height") || "";
+
+        document.getElementById("weight").value =
+            localStorage.getItem("weight") || "";
+
+        document.getElementById("goalWeight").value =
+            localStorage.getItem("goalWeight") || "";
+
+
+        // Save information
+
+        function saveProfile() {
+
+            localStorage.setItem(
+                "name",
+                document.getElementById("name").value
+            );
+
+            localStorage.setItem(
+                "age",
+                document.getElementById("age").value
+            );
+
+            localStorage.setItem(
+                "height",
+                document.getElementById("height").value
+            );
+
+            localStorage.setItem(
+                "weight",
+                document.getElementById("weight").value
+            );
+
+            localStorage.setItem(
+                "goalWeight",
+                document.getElementById("goalWeight").value
+            );
+
+            alert("Profile saved successfully! 💪🔥");
+        }
+
+    </script>
 
 </body>
 
