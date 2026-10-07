@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Calculator - Coach Bilel</title>
 
@@ -111,6 +110,18 @@
 
     <script>
 
+        // Load information from MY PROFILE
+
+        document.getElementById("age").value =
+            localStorage.getItem("age") || "";
+
+        document.getElementById("height").value =
+            localStorage.getItem("height") || "";
+
+        document.getElementById("weight").value =
+            localStorage.getItem("weight") || "";
+
+
         function calculate() {
 
             const age =
@@ -186,4 +197,4 @@
 
 </body>
 
-          </html>
+</html>
