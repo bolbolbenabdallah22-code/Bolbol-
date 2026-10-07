@@ -86,13 +86,9 @@
 
             <h2>🔥 CALORIE RESULTS</h2>
 
-            <p id="bmr">
-                BMR: -
-            </p>
+            <p id="bmr">BMR: -</p>
 
-            <p id="tdee">
-                TDEE: -
-            </p>
+            <p id="tdee">TDEE: -</p>
 
             <p id="calories">
                 Fat Loss Calories: -
@@ -105,9 +101,7 @@
 
             <h2>⚖️ BMI RESULTS</h2>
 
-            <p id="bmi">
-                BMI: -
-            </p>
+            <p id="bmi">BMI: -</p>
 
             <p id="bmiCategory">
                 Category: -
@@ -125,7 +119,7 @@
 
     <script>
 
-        // Load information from MY PROFILE
+        // Load Profile data
 
         document.getElementById("age").value =
             localStorage.getItem("age") || "";
@@ -135,6 +129,31 @@
 
         document.getElementById("weight").value =
             localStorage.getItem("weight") || "";
+
+
+        // Load saved calculator settings
+
+        const savedGender =
+            localStorage.getItem("gender");
+
+        const savedActivity =
+            localStorage.getItem("activity");
+
+
+        if (savedGender) {
+
+            document.getElementById("gender").value =
+                savedGender;
+
+        }
+
+
+        if (savedActivity) {
+
+            document.getElementById("activity").value =
+                savedActivity;
+
+        }
 
 
         function calculate() {
@@ -157,4 +176,127 @@
 
             if (!age || !height || !weight) {
 
-                alert
+                alert("Please enter all information.");
+
+                return;
+
+            }
+
+
+            // Save settings
+
+            localStorage.setItem(
+                "gender",
+                gender
+            );
+
+            localStorage.setItem(
+                "activity",
+                activity
+            );
+
+
+            // BMR
+
+            let bmr;
+
+
+            if (gender === "male") {
+
+                bmr =
+                    (10 * weight) +
+                    (6.25 * height) -
+                    (5 * age) +
+                    5;
+
+            } else {
+
+                bmr =
+                    (10 * weight) +
+                    (6.25 * height) -
+                    (5 * age) -
+                    161;
+
+            }
+
+
+            // TDEE
+
+            const tdee =
+                bmr * activity;
+
+
+            // Fat Loss Calories
+
+            const fatLossCalories =
+                tdee - 400;
+
+
+            // BMI
+
+            const heightMeters =
+                height / 100;
+
+            const bmi =
+                weight /
+                (heightMeters * heightMeters);
+
+
+            let category;
+
+
+            if (bmi < 18.5) {
+
+                category = "Underweight";
+
+            } else if (bmi < 25) {
+
+                category = "Normal Weight";
+
+            } else if (bmi < 30) {
+
+                category = "Overweight";
+
+            } else {
+
+                category = "Obesity";
+
+            }
+
+
+            // Results
+
+            document.getElementById("bmr").textContent =
+                "BMR: " +
+                Math.round(bmr) +
+                " kcal";
+
+
+            document.getElementById("tdee").textContent =
+                "TDEE: " +
+                Math.round(tdee) +
+                " kcal";
+
+
+            document.getElementById("calories").textContent =
+                "Fat Loss Calories: " +
+                Math.round(fatLossCalories) +
+                " kcal";
+
+
+            document.getElementById("bmi").textContent =
+                "BMI: " +
+                bmi.toFixed(1);
+
+
+            document.getElementById("bmiCategory").textContent =
+                "Category: " +
+                category;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
