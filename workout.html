@@ -120,57 +120,12 @@
 
     <script>
 
-        // Load saved weights
+        // =========================
+        // LOAD SAVED WEIGHTS
+        // =========================
 
         document.getElementById("bench").value =
             localStorage.getItem("bench") || "";
 
         document.getElementById("incline").value =
-            localStorage.getItem("incline") || "";
-
-        document.getElementById("fly").value =
-            localStorage.getItem("fly") || "";
-
-        document.getElementById("pushdown").value =
-            localStorage.getItem("pushdown") || "";
-
-        document.getElementById("extension").value =
-            localStorage.getItem("extension") || "";
-
-
-        // Save weights automatically
-
-        document.getElementById("bench").addEventListener(
-            "input",
-            function () {
-                localStorage.setItem(
-                    "bench",
-                    this.value
-                );
-            }
-        );
-
-
-        document.getElementById("incline").addEventListener(
-            "input",
-            function () {
-                localStorage.setItem(
-                    "incline",
-                    this.value
-                );
-            }
-        );
-
-
-        document.getElementById("fly").addEventListener(
-            "input",
-            function () {
-                localStorage.setItem(
-                    "fly",
-                    this.value
-                );
-            }
-        );
-
-
-        document.getElementById("push
+            localStorage
