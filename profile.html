@@ -44,13 +44,50 @@
 
     <script>
 
+        // Load saved information
+        document.getElementById("name").value =
+            localStorage.getItem("name") || "";
+
+        document.getElementById("age").value =
+            localStorage.getItem("age") || "";
+
+        document.getElementById("height").value =
+            localStorage.getItem("height") || "";
+
+        document.getElementById("weight").value =
+            localStorage.getItem("weight") || "";
+
+        document.getElementById("goal").value =
+            localStorage.getItem("goal") || "";
+
+
+        // Save information
         function saveProfile() {
 
-            localStorage.setItem("name", document.getElementById("name").value);
-            localStorage.setItem("age", document.getElementById("age").value);
-            localStorage.setItem("height", document.getElementById("height").value);
-            localStorage.setItem("weight", document.getElementById("weight").value);
-            localStorage.setItem("goal", document.getElementById("goal").value);
+            localStorage.setItem(
+                "name",
+                document.getElementById("name").value
+            );
+
+            localStorage.setItem(
+                "age",
+                document.getElementById("age").value
+            );
+
+            localStorage.setItem(
+                "height",
+                document.getElementById("height").value
+            );
+
+            localStorage.setItem(
+                "weight",
+                document.getElementById("weight").value
+            );
+
+            localStorage.setItem(
+                "goal",
+                document.getElementById("goal").value
+            );
 
             alert("Profile saved successfully! 💪🔥");
         }
