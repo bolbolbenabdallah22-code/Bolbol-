@@ -89,7 +89,10 @@
         </div>
 
 
-        <button onclick="completeWorkout()">
+        <button
+            id="completeButton"
+            onclick="completeWorkout()"
+        >
             ✅ COMPLETE WORKOUT
         </button>
 
@@ -135,140 +138,39 @@
             localStorage.getItem("extension") || "";
 
 
-        // Load workout history
+        // Save weights automatically
 
-        function loadHistory() {
-
-            const history =
-                JSON.parse(
-                    localStorage.getItem("workoutHistory")
-                ) || [];
-
-
-            const historyBox =
-                document.getElementById("history");
-
-
-            if (history.length === 0) {
-
-                historyBox.textContent =
-                    "No workouts yet.";
-
-                return;
-
+        document.getElementById("bench").addEventListener(
+            "input",
+            function () {
+                localStorage.setItem(
+                    "bench",
+                    this.value
+                );
             }
+        );
 
 
-            historyBox.innerHTML = "";
+        document.getElementById("incline").addEventListener(
+            "input",
+            function () {
+                localStorage.setItem(
+                    "incline",
+                    this.value
+                );
+            }
+        );
 
 
-            history.forEach(function(workout) {
-
-                const item =
-                    document.createElement("p");
-
-                item.textContent =
-                    "🔥 " +
-                    workout.date +
-                    " — " +
-                    workout.name;
-
-                historyBox.appendChild(item);
-
-            });
-
-        }
+        document.getElementById("fly").addEventListener(
+            "input",
+            function () {
+                localStorage.setItem(
+                    "fly",
+                    this.value
+                );
+            }
+        );
 
 
-        // Complete workout
-
-        function completeWorkout() {
-
-            // Save weights
-
-            localStorage.setItem(
-                "bench",
-                document.getElementById("bench").value
-            );
-
-            localStorage.setItem(
-                "incline",
-                document.getElementById("incline").value
-            );
-
-            localStorage.setItem(
-                "fly",
-                document.getElementById("fly").value
-            );
-
-            localStorage.setItem(
-                "pushdown",
-                document.getElementById("pushdown").value
-            );
-
-            localStorage.setItem(
-                "extension",
-                document.getElementById("extension").value
-            );
-
-
-            // Workout counter
-
-            let workouts =
-                Number(localStorage.getItem("workouts")) || 0;
-
-            workouts++;
-
-
-            localStorage.setItem(
-                "workouts",
-                workouts
-            );
-
-
-            // Create history entry
-
-            const history =
-                JSON.parse(
-                    localStorage.getItem("workoutHistory")
-                ) || [];
-
-
-            const today =
-                new Date().toLocaleDateString();
-
-
-            history.push({
-
-                date: today,
-
-                name: "Chest + Triceps"
-
-            });
-
-
-            localStorage.setItem(
-                "workoutHistory",
-                JSON.stringify(history)
-            );
-
-
-            document.getElementById("message").textContent =
-                "🔥 Workout completed! Total: " +
-                workouts;
-
-
-            loadHistory();
-
-        }
-
-
-        // Show history when page opens
-
-        loadHistory();
-
-    </script>
-
-</body>
-
-                </html>
+        document.getElementById("push
