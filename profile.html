@@ -20,15 +20,37 @@
 
         <div class="day">
 
-            <input id="name" type="text" placeholder="Your Name">
+            <input
+                id="name"
+                type="text"
+                placeholder="Your Name"
+            >
 
-            <input id="age" type="number" placeholder="Age">
+            <input
+                id="age"
+                type="number"
+                placeholder="Age"
+            >
 
-            <input id="height" type="number" placeholder="Height (cm)">
+            <input
+                id="height"
+                type="number"
+                placeholder="Height (cm)"
+            >
 
-            <input id="weight" type="number" placeholder="Weight (kg)">
+            <input
+                id="weight"
+                type="number"
+                step="0.1"
+                placeholder="Current Weight (kg)"
+            >
 
-            <input id="goal" type="text" placeholder="Your Goal">
+            <input
+                id="goalWeight"
+                type="number"
+                step="0.1"
+                placeholder="Goal Weight (kg)"
+            >
 
             <button onclick="saveProfile()">
                 💾 SAVE PROFILE
@@ -45,6 +67,7 @@
     <script>
 
         // Load saved information
+
         document.getElementById("name").value =
             localStorage.getItem("name") || "";
 
@@ -57,11 +80,12 @@
         document.getElementById("weight").value =
             localStorage.getItem("weight") || "";
 
-        document.getElementById("goal").value =
-            localStorage.getItem("goal") || "";
+        document.getElementById("goalWeight").value =
+            localStorage.getItem("goalWeight") || "";
 
 
         // Save information
+
         function saveProfile() {
 
             localStorage.setItem(
@@ -85,8 +109,8 @@
             );
 
             localStorage.setItem(
-                "goal",
-                document.getElementById("goal").value
+                "goalWeight",
+                document.getElementById("goalWeight").value
             );
 
             alert("Profile saved successfully! 💪🔥");
@@ -96,4 +120,4 @@
 
 </body>
 
-</html>
+            </html>
