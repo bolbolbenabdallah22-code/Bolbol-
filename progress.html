@@ -19,18 +19,28 @@
         <p>Track your fitness progress</p>
 
         <div class="day">
+            <h2>👤 PROFILE</h2>
+            <p id="name">Not set yet</p>
+        </div>
+
+        <div class="day">
             <h2>⚖️ CURRENT WEIGHT</h2>
             <p id="currentWeight">Not set yet</p>
         </div>
 
         <div class="day">
-            <h2>🎯 GOAL</h2>
-            <p id="goal">Not set yet</p>
+            <h2>🎯 GOAL WEIGHT</h2>
+            <p id="goalWeight">Not set yet</p>
         </div>
 
         <div class="day">
-            <h2>👤 PROFILE</h2>
-            <p id="name">Not set yet</p>
+            <h2>📉 WEIGHT DIFFERENCE</h2>
+            <p id="difference">Not available</p>
+        </div>
+
+        <div class="day">
+            <h2>📈 PROGRESS</h2>
+            <p id="progressPercent">Not available</p>
         </div>
 
         <div class="day">
@@ -47,27 +57,67 @@
     <script>
 
         const name = localStorage.getItem("name");
-        const weight = localStorage.getItem("weight");
-        const goal = localStorage.getItem("goal");
+        const weight = Number(localStorage.getItem("weight"));
+        const goalWeight = Number(localStorage.getItem("goalWeight"));
         const workouts =
-    Number(localStorage.getItem("workouts")) || 0;
+            Number(localStorage.getItem("workouts")) || 0;
 
-document.getElementById("workouts").textContent =
-    workouts + (workouts === 1 ? " workout" : " workouts");
 
-        if (weight) {
+        // Profile
+        if (name) {
+            document.getElementById("name").textContent = name;
+        }
+
+
+        // Current Weight
+        if (weight > 0) {
             document.getElementById("currentWeight").textContent =
                 weight + " kg";
         }
 
-        if (goal) {
-            document.getElementById("goal").textContent = goal;
+
+        // Goal Weight
+        if (goalWeight > 0) {
+
+            document.getElementById("goalWeight").textContent =
+                goalWeight + " kg";
+
+
+            // Weight Difference
+            if (weight > 0) {
+
+                const difference =
+                    weight - goalWeight;
+
+                document.getElementById("difference").textContent =
+                    difference.toFixed(1) + " kg";
+
+
+                // Progress %
+                if (weight > goalWeight) {
+
+                    const progress =
+                        ((weight - goalWeight) / weight) * 100;
+
+                    document.getElementById("progressPercent").textContent =
+                        progress.toFixed(1) + "%";
+
+                } else {
+
+                    document.getElementById("progressPercent").textContent =
+                        "100%";
+
+                }
+
+            }
+
         }
 
-        if (workoutCompleted === "true") {
-            document.getElementById("workouts").textContent =
-                "1 workout";
-        }
+
+        // Workouts
+        document.getElementById("workouts").textContent =
+            workouts +
+            (workouts === 1 ? " workout" : " workouts");
 
     </script>
 
