@@ -14,27 +14,44 @@
 
     <div class="container">
 
-        <h1>📅 MY WORKOUT</h1>
+        <h1>🏋️ MY WORKOUT</h1>
 
         <p>Today's Training</p>
 
         <div class="day">
-            <h2>DAY 1</h2>
-            <p>Chest + Triceps</p>
-            <p>🔥 Strength Training</p>
+
+            <h2>🔥 CHEST + TRICEPS</h2>
+
+            <p>1. Bench Press</p>
+            <p>4 Sets × 10 Reps</p>
+
+            <p>2. Incline Dumbbell Press</p>
+            <p>3 Sets × 12 Reps</p>
+
+            <p>3. Cable Fly</p>
+            <p>3 Sets × 15 Reps</p>
+
+            <p>4. Triceps Pushdown</p>
+            <p>3 Sets × 12 Reps</p>
+
+            <p>5. Overhead Triceps Extension</p>
+            <p>3 Sets × 12 Reps</p>
+
         </div>
 
         <div class="day">
-            <h2>DAY 2</h2>
-            <p>Back + Biceps</p>
-            <p>🔥 Strength Training</p>
+
+            <h2>⏱️ REST</h2>
+
+            <p>Rest between sets: 60–120 seconds</p>
+
         </div>
 
-        <div class="day">
-            <h2>DAY 3</h2>
-            <p>Legs + Shoulders</p>
-            <p>🔥 Strength Training</p>
-        </div>
+        <button onclick="completeWorkout()">
+            ✅ COMPLETE WORKOUT
+        </button>
+
+        <p id="message"></p>
 
         <a class="back" href="dashboard.html">
             ← BACK
@@ -42,6 +59,22 @@
 
     </div>
 
+    <script>
+
+        function completeWorkout() {
+
+            localStorage.setItem(
+                "workoutCompleted",
+                "true"
+            );
+
+            document.getElementById("message").textContent =
+                "🔥 Workout completed! Great job!";
+
+        }
+
+    </script>
+
 </body>
 
-</html>
+            </html>
