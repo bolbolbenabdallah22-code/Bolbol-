@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nutrition - Coach Bilel</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🍽️ NUTRITION</h1>
+
+        <p>Daily nutrition targets</p>
+
+
+        <!-- CALORIES -->
+
+        <div class="day">
+
+            <h2>🔥 DAILY CALORIES</h2>
+
+            <p id="calories">
+                Calories: -
+            </p>
+
+        </div>
+
+
+        <!-- MACROS -->
+
+        <div class="day">
+
+            <h2>🥩 DAILY MACROS</h2>
+
+            <p id="protein">
+                Protein: -
+            </p>
+
+            <p id="carbs">
+                Carbs: -
+            </p>
+
+            <p id="fats">
+                Fats: -
+            </p>
+
+        </div>
+
+
+        <!-- WATER -->
+
+        <div class="day">
+
+            <h2>💧 WATER</h2>
+
+            <p>
+                Recommended:
+                2–3 Liters / Day
+            </p>
+
+            <button onclick="addWater()">
+                💧 DRINK WATER
+            </button>
+
+            <p id="water">
+                Glasses: 0
+            </p>
+
+        </div>
+
+
+        <!-- MEALS -->
+
+        <div class="day">
+
+            <h2>🍽️ MEAL STRUCTURE</h2>
+
+            <p>🥣 Breakfast</p>
+            <p>Protein + Carbs + Healthy Fats</p>
+
+            <p>🍗 Lunch</p>
+            <p>Lean Protein + Rice/Potatoes + Vegetables</p>
+
+            <p>🥩 Dinner</p>
+            <p>Lean Protein + Vegetables + Carbs</p>
+
+            <p>🥛 Snack</p>
+            <p>Protein-rich snack</p>
+
+        </div>
+
+
+        <a class="back" href="dashboard.html">
+            ← BACK TO DASHBOARD
+        </a>
+
+    </div>
+
+
+    <script>
+
+        // =========================
+        // LOAD USER DATA
+        // =========================
+
+        const savedCalories =
+            localStorage.getItem(
+                "calories"
+            );
+
+
+        const savedProtein =
+            localStorage.getItem(
+                "protein"
+            );
+
+
+        const savedCarbs =
+            localStorage.getItem(
+                "carbs"
+            );
+
+
+        const savedFats =
+            localStorage.getItem(
+                "fats"
+            );
+
+
+        // =========================
+        // CALORIES
+        // =========================
+
+        if (savedCalories) {
+
+            document.getElementById(
+                "calories"
+            ).textContent =
+                "Calories: " +
+                savedCalories +
+                " kcal";
+
+        } else {
+
+            document.getElementById(
+                "calories"
+            ).textContent =
+                "Calories: Calculate your calories first";
+
+        }
+
+
+        // =========================
+        // MACROS
+        // =========================
+
+        if (savedProtein) {
+
+            document.getElementById(
+                "protein"
+            ).textContent =
+                "Protein: " +
+                savedProtein +
+                " g";
+
+        } else {
+
+            document.getElementById(
+                "protein"
+            ).textContent =
+                "Protein: Not set";
+
+        }
+
+
+        if (
