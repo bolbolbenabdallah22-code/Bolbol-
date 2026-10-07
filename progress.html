@@ -19,22 +19,18 @@
         <p>Track your fitness progress</p>
 
         <div class="day">
-            <h2>⚖️ WEIGHT</h2>
-            <p>Starting Weight: 0 kg</p>
-            <p>Current Weight: 0 kg</p>
-            <p>Goal Weight: 0 kg</p>
+            <h2>⚖️ CURRENT WEIGHT</h2>
+            <p id="currentWeight">Not set yet</p>
         </div>
 
         <div class="day">
-            <h2>💪 STRENGTH</h2>
-            <p>Bench Press: 0 kg</p>
-            <p>Squat: 0 kg</p>
-            <p>Deadlift: 0 kg</p>
+            <h2>🎯 GOAL</h2>
+            <p id="goal">Not set yet</p>
         </div>
 
         <div class="day">
-            <h2>🔥 WORKOUTS</h2>
-            <p>Completed: 0 workouts</p>
+            <h2>👤 PROFILE</h2>
+            <p id="name">Not set yet</p>
         </div>
 
         <a class="back" href="dashboard.html">
@@ -42,6 +38,27 @@
         </a>
 
     </div>
+
+    <script>
+
+        const name = localStorage.getItem("name");
+        const weight = localStorage.getItem("weight");
+        const goal = localStorage.getItem("goal");
+
+        if (name) {
+            document.getElementById("name").textContent = name;
+        }
+
+        if (weight) {
+            document.getElementById("currentWeight").textContent =
+                weight + " kg";
+        }
+
+        if (goal) {
+            document.getElementById("goal").textContent = goal;
+        }
+
+    </script>
 
 </body>
 
