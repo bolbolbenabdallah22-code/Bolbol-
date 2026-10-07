@@ -32,10 +32,12 @@
             <h2>👤 PROFILE</h2>
             <p id="name">Not set yet</p>
         </div>
-<div class="day">
-    <h2>🏆 WORKOUTS COMPLETED</h2>
-    <p id="workouts">0 workouts</p>
-    </div> 
+
+        <div class="day">
+            <h2>🏆 WORKOUTS COMPLETED</h2>
+            <p id="workouts">0 workouts</p>
+        </div>
+
         <a class="back" href="dashboard.html">
             ← BACK
         </a>
@@ -45,15 +47,10 @@
     <script>
 
         const name = localStorage.getItem("name");
-        const workoutCompleted =
-    localStorage.getItem("workoutCompleted");
-
-if (workoutCompleted === "true") {
-    document.getElementById("workouts").textContent =
-        "1 workout";
-}
         const weight = localStorage.getItem("weight");
         const goal = localStorage.getItem("goal");
+        const workoutCompleted =
+            localStorage.getItem("workoutCompleted");
 
         if (name) {
             document.getElementById("name").textContent = name;
@@ -66,6 +63,11 @@ if (workoutCompleted === "true") {
 
         if (goal) {
             document.getElementById("goal").textContent = goal;
+        }
+
+        if (workoutCompleted === "true") {
+            document.getElementById("workouts").textContent =
+                "1 workout";
         }
 
     </script>
