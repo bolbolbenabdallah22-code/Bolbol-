@@ -18,6 +18,7 @@
 
         <p>Enter your information</p>
 
+
         <div class="day">
 
             <input
@@ -26,17 +27,20 @@
                 placeholder="Your Name"
             >
 
+
             <input
                 id="age"
                 type="number"
                 placeholder="Age"
             >
 
+
             <input
                 id="height"
                 type="number"
                 placeholder="Height (cm)"
             >
+
 
             <input
                 id="weight"
@@ -45,6 +49,7 @@
                 placeholder="Current Weight (kg)"
             >
 
+
             <input
                 id="goalWeight"
                 type="number"
@@ -52,17 +57,37 @@
                 placeholder="Goal Weight (kg)"
             >
 
+
             <button onclick="saveProfile()">
                 💾 SAVE PROFILE
             </button>
 
         </div>
 
+
+        <div class="day">
+
+            <h2>📌 STARTING WEIGHT</h2>
+
+            <p id="startingWeight">
+                Not set yet
+            </p>
+
+            <p>
+                Starting weight is saved when
+                you create your profile for
+                the first time.
+            </p>
+
+        </div>
+
+
         <a class="back" href="dashboard.html">
             ← BACK
         </a>
 
     </div>
+
 
     <script>
 
@@ -84,40 +109,119 @@
             localStorage.getItem("goalWeight") || "";
 
 
-        // Save information
+        // Show starting weight
+
+        const savedStartingWeight =
+            localStorage.getItem("startingWeight");
+
+
+        if (savedStartingWeight) {
+
+            document.getElementById(
+                "startingWeight"
+            ).textContent =
+                savedStartingWeight +
+                " kg";
+
+        }
+
 
         function saveProfile() {
 
+            const name =
+                document.getElementById("name").value;
+
+            const age =
+                document.getElementById("age").value;
+
+            const height =
+                document.getElementById("height").value;
+
+            const weight =
+                document.getElementById("weight").value;
+
+            const goalWeight =
+                document.getElementById("goalWeight").value;
+
+
+            if (
+                !name ||
+                !age ||
+                !height ||
+                !weight ||
+                !goalWeight
+            ) {
+
+                alert(
+                    "Please enter all information."
+                );
+
+                return;
+
+            }
+
+
+            // Save profile
+
             localStorage.setItem(
                 "name",
-                document.getElementById("name").value
+                name
             );
 
             localStorage.setItem(
                 "age",
-                document.getElementById("age").value
+                age
             );
 
             localStorage.setItem(
                 "height",
-                document.getElementById("height").value
+                height
             );
 
             localStorage.setItem(
                 "weight",
-                document.getElementById("weight").value
+                weight
             );
 
             localStorage.setItem(
                 "goalWeight",
-                document.getElementById("goalWeight").value
+                goalWeight
             );
 
-            alert("Profile saved successfully! 💪🔥");
+
+            // Save starting weight only once
+
+            if (
+                !localStorage.getItem(
+                    "startingWeight"
+                )
+            ) {
+
+                localStorage.setItem(
+                    "startingWeight",
+                    weight
+                );
+
+            }
+
+
+            document.getElementById(
+                "startingWeight"
+            ).textContent =
+                localStorage.getItem(
+                    "startingWeight"
+                ) +
+                " kg";
+
+
+            alert(
+                "Profile saved successfully! 💪🔥"
+            );
+
         }
 
     </script>
 
 </body>
 
-            </html>
+    </html>
