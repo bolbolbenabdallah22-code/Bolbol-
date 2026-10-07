@@ -84,10 +84,7 @@
 
             <h2>⏱️ REST</h2>
 
-            <p>
-                Rest between sets:
-                60–120 seconds
-            </p>
+            <p>Rest between sets: 60–120 seconds</p>
 
         </div>
 
@@ -98,6 +95,17 @@
 
 
         <p id="message"></p>
+
+
+        <div class="day">
+
+            <h2>📅 WORKOUT HISTORY</h2>
+
+            <div id="history">
+                No workouts yet.
+            </div>
+
+        </div>
 
 
         <a class="back" href="dashboard.html">
@@ -126,6 +134,53 @@
         document.getElementById("extension").value =
             localStorage.getItem("extension") || "";
 
+
+        // Load workout history
+
+        function loadHistory() {
+
+            const history =
+                JSON.parse(
+                    localStorage.getItem("workoutHistory")
+                ) || [];
+
+
+            const historyBox =
+                document.getElementById("history");
+
+
+            if (history.length === 0) {
+
+                historyBox.textContent =
+                    "No workouts yet.";
+
+                return;
+
+            }
+
+
+            historyBox.innerHTML = "";
+
+
+            history.forEach(function(workout) {
+
+                const item =
+                    document.createElement("p");
+
+                item.textContent =
+                    "🔥 " +
+                    workout.date +
+                    " — " +
+                    workout.name;
+
+                historyBox.appendChild(item);
+
+            });
+
+        }
+
+
+        // Complete workout
 
         function completeWorkout() {
 
@@ -157,7 +212,7 @@
             );
 
 
-            // Count workout
+            // Workout counter
 
             let workouts =
                 Number(localStorage.getItem("workouts")) || 0;
@@ -171,9 +226,30 @@
             );
 
 
+            // Create history entry
+
+            const history =
+                JSON.parse(
+                    localStorage.getItem("workoutHistory")
+                ) || [];
+
+
+            const today =
+                new Date().toLocaleDateString();
+
+
+            history.push({
+
+                date: today,
+
+                name: "Chest + Triceps"
+
+            });
+
+
             localStorage.setItem(
-                "workoutCompleted",
-                "true"
+                "workoutHistory",
+                JSON.stringify(history)
             );
 
 
@@ -181,10 +257,18 @@
                 "🔥 Workout completed! Total: " +
                 workouts;
 
+
+            loadHistory();
+
         }
+
+
+        // Show history when page opens
+
+        loadHistory();
 
     </script>
 
 </body>
 
-    </html>
+                </html>
