@@ -16,27 +16,54 @@
 
         <h1>COACH BILEL 💪</h1>
 
-        <p>Your Fitness Dashboard</p>
+        <p id="welcome">
+            Your Fitness Dashboard
+        </p>
+
+
+        <div class="day">
+
+            <h2>👤 MY STATUS</h2>
+
+            <p id="weight">
+                Weight: -
+            </p>
+
+            <p id="goal">
+                Goal: -
+            </p>
+
+            <p id="workouts">
+                Workouts: 0
+            </p>
+
+        </div>
+
 
         <a class="program" href="programs.html">
             🏋️ MY PROGRAMS
         </a>
 
+
         <a class="program" href="workout.html">
             📅 MY WORKOUT
         </a>
+
 
         <a class="program" href="progress.html">
             📊 MY PROGRESS
         </a>
 
+
         <a class="program" href="profile.html">
             👤 MY PROFILE
         </a>
 
+
         <a class="program" href="calculator.html">
             🧮 CALCULATOR
         </a>
+
 
         <a class="back" href="index.html">
             ← HOME
@@ -44,6 +71,66 @@
 
     </div>
 
+
+    <script>
+
+        const name =
+            localStorage.getItem("name");
+
+        const weight =
+            localStorage.getItem("weight");
+
+        const goalWeight =
+            localStorage.getItem("goalWeight");
+
+        const workouts =
+            Number(localStorage.getItem("workouts")) || 0;
+
+
+        // Welcome
+
+        if (name) {
+
+            document.getElementById("welcome").textContent =
+                "Welcome back, " +
+                name +
+                " 💪";
+
+        }
+
+
+        // Weight
+
+        if (weight) {
+
+            document.getElementById("weight").textContent =
+                "Weight: " +
+                weight +
+                " kg";
+
+        }
+
+
+        // Goal
+
+        if (goalWeight) {
+
+            document.getElementById("goal").textContent =
+                "Goal: " +
+                goalWeight +
+                " kg";
+
+        }
+
+
+        // Workouts
+
+        document.getElementById("workouts").textContent =
+            "Workouts: " +
+            workouts;
+
+    </script>
+
 </body>
 
-</html>
+            </html>
