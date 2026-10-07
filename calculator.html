@@ -16,7 +16,7 @@
 
         <h1>🧮 CALCULATOR</h1>
 
-        <p>Calculate your calories</p>
+        <p>Calories & BMI Calculator</p>
 
         <div class="day">
 
@@ -84,7 +84,7 @@
 
         <div class="day">
 
-            <h2>🔥 RESULTS</h2>
+            <h2>🔥 CALORIE RESULTS</h2>
 
             <p id="bmr">
                 BMR: -
@@ -96,6 +96,21 @@
 
             <p id="calories">
                 Fat Loss Calories: -
+            </p>
+
+        </div>
+
+
+        <div class="day">
+
+            <h2>⚖️ BMI RESULTS</h2>
+
+            <p id="bmi">
+                BMI: -
+            </p>
+
+            <p id="bmiCategory">
+                Category: -
             </p>
 
         </div>
@@ -142,59 +157,4 @@
 
             if (!age || !height || !weight) {
 
-                alert("Please enter all information.");
-
-                return;
-            }
-
-
-            let bmr;
-
-
-            if (gender === "male") {
-
-                bmr =
-                    (10 * weight) +
-                    (6.25 * height) -
-                    (5 * age) +
-                    5;
-
-            } else {
-
-                bmr =
-                    (10 * weight) +
-                    (6.25 * height) -
-                    (5 * age) -
-                    161;
-
-            }
-
-
-            const tdee =
-                bmr * activity;
-
-
-            const fatLossCalories =
-                tdee - 400;
-
-
-            document.getElementById("bmr").textContent =
-                "BMR: " + Math.round(bmr) + " kcal";
-
-
-            document.getElementById("tdee").textContent =
-                "TDEE: " + Math.round(tdee) + " kcal";
-
-
-            document.getElementById("calories").textContent =
-                "Fat Loss Calories: " +
-                Math.round(fatLossCalories) +
-                " kcal";
-
-        }
-
-    </script>
-
-</body>
-
-</html>
+                alert
