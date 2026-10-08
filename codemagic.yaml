@@ -4,16 +4,31 @@ workflows:
     environment:
       node: 22
       java: 17
+
     scripts:
       - name: Install dependencies
         script: npm install
-      - name: Install Capacitor CLI
-        script: npm install -g @capacitor/cli
+
+      - name: Prepare web files
+        script: |
+          mkdir -p www
+          cp *.html www/
+          cp *.js www/
+          cp *.css www/
+
       - name: Create Android project
-        script: npx cap add android
-      - name: Sync web app
-        script: npx cap sync android
+        script: |
+          rm -rf android
+          npx cap add android
+
+      - name: Sync Android
+        script: |
+          npx cap sync android
+
       - name: Build APK
-        script: cd android && ./gradlew assembleDebug
+        script: |
+          cd android
+          ./gradlew assembleDebug
+
     artifacts:
       - android/app/build/outputs/apk/debug/app-debug.apk
