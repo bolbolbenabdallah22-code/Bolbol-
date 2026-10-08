@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - Coach Bilel</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>COACH BILEL 💪</h1>
+
+        <p id="welcome">
+            Your Fitness Dashboard
+        </p>
+
+
+        <div class="day">
+
+            <h2>📊 QUICK STATS</h2>
+
+            <p id="weight">
+                Weight: -
+            </p>
+
+            <p id="goal">
+                Goal: -
+            </p>
+
+            <p id="remaining">
+                Remaining: -
+            </p>
+
+            <p id="progress">
+                Progress: -
+            </p>
+
+            <p id="workouts">
+                Workouts: 0
+            </p>
+
+        </div>
+
+
+        <a class="program" href="programs.html">
+            🏋️ MY PROGRAMS
+            <br>
+            <small>
+                Strength • Kick Boxing • Fat Loss
+            </small>
+        </a>
+
+
+        <a class="program" href="workout.html">
+            📅 MY WORKOUT
+            <br>
+            <small>
+                Track today's training
+            </small>
+        </a>
+
+
+        <a class="program" href="progress.html">
+            📊 MY PROGRESS
+            <br>
+            <small>
+                Track your body progress
+            </small>
+        </a>
+
+
+        <a class="program" href="nutrition.html">
+            🍽️ NUTRITION
+            <br>
+            <small>
+                Calories • Macros • Water
+            </small>
+        </a>
+
+
+        <a class="program" href="profile.html">
+            👤 MY PROFILE
+            <br>
+            <small>
+                Personal information
+            </small>
+        </a>
+
+
+        <a class="program" href="calculator.html">
+            🧮 CALCULATOR
+            <br>
+            <small>
+                BMR • TDEE • BMI
+            </small>
+        </a>
+
+
+        <a class="back" href="index.html">
+            ← HOME
+        </a>
+
+    </div>
+
+
+    <script>
+
+        const name =
+            localStorage.getItem("name");
+
+
+        const weight =
+            Number(
+                localStorage.getItem("weight")
+            );
+
+
+        const goalWeight =
+            Number(
+                localStorage.get
