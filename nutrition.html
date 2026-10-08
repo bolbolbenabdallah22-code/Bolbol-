@@ -16,7 +16,9 @@
 
         <h1>🍽️ NUTRITION</h1>
 
-        <p>Daily nutrition targets</p>
+        <p id="welcome">
+            Your daily nutrition targets
+        </p>
 
 
         <!-- CALORIES -->
@@ -27,6 +29,10 @@
 
             <p id="calories">
                 Calories: -
+            </p>
+
+            <p>
+                Target for fat loss
             </p>
 
         </div>
@@ -60,8 +66,7 @@
             <h2>💧 WATER</h2>
 
             <p>
-                Recommended:
-                2–3 Liters / Day
+                Target: 2–3 Liters / Day
             </p>
 
             <button onclick="addWater()">
@@ -71,6 +76,10 @@
             <p id="water">
                 Glasses: 0
             </p>
+
+            <button onclick="resetWater()">
+                🔄 RESET WATER
+            </button>
 
         </div>
 
@@ -82,16 +91,31 @@
             <h2>🍽️ MEAL STRUCTURE</h2>
 
             <p>🥣 Breakfast</p>
-            <p>Protein + Carbs + Healthy Fats</p>
+
+            <p>
+                Protein + Carbs + Healthy Fats
+            </p>
+
 
             <p>🍗 Lunch</p>
-            <p>Lean Protein + Rice/Potatoes + Vegetables</p>
+
+            <p>
+                Lean Protein + Rice/Potatoes + Vegetables
+            </p>
+
 
             <p>🥩 Dinner</p>
-            <p>Lean Protein + Vegetables + Carbs</p>
+
+            <p>
+                Lean Protein + Vegetables + Carbs
+            </p>
+
 
             <p>🥛 Snack</p>
-            <p>Protein-rich snack</p>
+
+            <p>
+                Protein-rich snack
+            </p>
 
         </div>
 
@@ -106,44 +130,141 @@
     <script>
 
         // =========================
-        // LOAD USER DATA
+        // USER DATA
         // =========================
 
-        const savedCalories =
-            localStorage.getItem(
-                "calories"
+        const name =
+            localStorage.getItem("name") || "";
+
+
+        const weight =
+            Number(
+                localStorage.getItem("weight")
             );
 
 
-        const savedProtein =
-            localStorage.getItem(
-                "protein"
-            );
+        // =========================
+        // WELCOME
+        // =========================
 
+        if (name) {
 
-        const savedCarbs =
-            localStorage.getItem(
-                "carbs"
-            );
+            document.getElementById(
+                "welcome"
+            ).textContent =
+                "Nutrition plan for " +
+                name +
+                " 💪";
 
-
-        const savedFats =
-            localStorage.getItem(
-                "fats"
-            );
+        }
 
 
         // =========================
         // CALORIES
         // =========================
 
-        if (savedCalories) {
+        const savedCalories =
+            Number(
+                localStorage.getItem("calories")
+            );
+
+
+        let calories =
+            savedCalories;
+
+
+        /*
+            If calories were not saved yet,
+            calculate them from BMR + activity.
+        */
+
+        if (
+            !calories &&
+            weight > 0
+        ) {
+
+            const age =
+                Number(
+                    localStorage.getItem("age")
+                );
+
+
+            const height =
+                Number(
+                    localStorage.getItem("height")
+                );
+
+
+            const gender =
+                localStorage.getItem(
+                    "gender"
+                ) || "male";
+
+
+            const activity =
+                Number(
+                    localStorage.getItem(
+                        "activity"
+                    )
+                ) || 1.2;
+
+
+            if (
+                age > 0 &&
+                height > 0
+            ) {
+
+                let bmr;
+
+
+                if (
+                    gender === "male"
+                ) {
+
+                    bmr =
+                        (10 * weight) +
+                        (6.25 * height) -
+                        (5 * age) +
+                        5;
+
+                } else {
+
+                    bmr =
+                        (10 * weight) +
+                        (6.25 * height) -
+                        (5 * age) -
+                        161;
+
+                }
+
+
+                const tdee =
+                    bmr * activity;
+
+
+                calories =
+                    Math.round(
+                        tdee - 400
+                    );
+
+
+                localStorage.setItem(
+                    "calories",
+                    calories
+                );
+
+            }
+
+        }
+
+
+        if (calories > 0) {
 
             document.getElementById(
                 "calories"
             ).textContent =
                 "Calories: " +
-                savedCalories +
+                calories +
                 " kcal";
 
         } else {
@@ -151,7 +272,7 @@
             document.getElementById(
                 "calories"
             ).textContent =
-                "Calories: Calculate your calories first";
+                "Calories: Calculate your profile first";
 
         }
 
@@ -160,23 +281,105 @@
         // MACROS
         // =========================
 
-        if (savedProtein) {
+        /*
+            Protein:
+            approximately 2 g per kg body weight.
+
+            Fat:
+            approximately 25% of calories.
+
+            Carbs:
+            remaining calories.
+        */
+
+        if (
+            calories > 0 &&
+            weight > 0
+        ) {
+
+            const protein =
+                Math.round(
+                    weight * 2
+                );
+
+
+            const fats =
+                Math.round(
+                    (calories * 0.25) / 9
+                );
+
+
+            const proteinCalories =
+                protein * 4;
+
+
+            const fatCalories =
+                fats * 9;
+
+
+            const remainingCalories =
+                calories -
+                proteinCalories -
+                fatCalories;
+
+
+            const carbs =
+                Math.max(
+                    0,
+                    Math.round(
+                        remainingCalories / 4
+                    )
+                );
+
 
             document.getElementById(
                 "protein"
             ).textContent =
                 "Protein: " +
-                savedProtein +
+                protein +
                 " g";
 
-        } else {
 
             document.getElementById(
-                "protein"
+                "carbs"
             ).textContent =
-                "Protein: Not set";
+                "Carbs: " +
+                carbs +
+                " g";
+
+
+            document.getElementById(
+                "fats"
+            ).textContent =
+                "Fats: " +
+                fats +
+                " g";
+
+
+            // Save macros
+
+            localStorage.setItem(
+                "protein",
+                protein
+            );
+
+
+            localStorage.setItem(
+                "carbs",
+                carbs
+            );
+
+
+            localStorage.setItem(
+                "fats",
+                fats
+            );
 
         }
 
 
-        if (
+        // =========================
+        // WATER
+        // =========================
+
+       
