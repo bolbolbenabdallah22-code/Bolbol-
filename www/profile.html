@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile - Coach Bilel</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>👤 MY PROFILE</h1>
+
+        <p>Enter your information</p>
+
+
+        <div class="day">
+
+            <input
+                id="name"
+                type="text"
+                placeholder="Your Name"
+            >
+
+
+            <input
+                id="age"
+                type="number"
+                placeholder="Age"
+            >
+
+
+            <input
+                id="height"
+                type="number"
+                placeholder="Height (cm)"
+            >
+
+
+            <input
+                id="weight"
+                type="number"
+                step="0.1"
+                placeholder="Current Weight (kg)"
+            >
+
+
+            <input
+                id="goalWeight"
+                type="number"
+                step="0.1"
+                placeholder="Goal Weight (kg)"
+            >
+
+
+            <select id="gender">
+
+                <option value="male">
+                    Male
+                </option>
+
+                <option value="female">
+                    Female
+                </option>
+
+            </select>
+
+
+            <select id="activity">
+
+                <option value="1.2">
+                    Sedentary
+                </option>
+
+                <option value="1.375">
+                    Light Activity
+                </option>
+
+                <option value="1.55">
+                    Moderate Activity
+                </option>
+
+                <option value="1.725">
+                    Very Active
+                </option>
+
+                <option value="1.9">
+                    Extremely Active
+                </option>
+
+            </select>
+
+
+            <button onclick="saveProfile()">
+                💾 SAVE PROFILE
+            </button>
+
+        </div>
+
+
+        <div class="day">
+
+            <h2>📌 STARTING WEIGHT</h2>
+
+            <p id="startingWeight">
+                Not set yet
+            </p>
+
+            <p>
+                Starting weight is saved when
+                you create your profile for
+                the first time.
+            </p>
+
+        </div>
+
+
+        <a class="back" href="dashboard.html">
+            ← BACK
+        </
