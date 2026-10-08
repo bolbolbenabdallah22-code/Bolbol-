@@ -8,6 +8,9 @@
     <title>Nutrition - Coach Bilel</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- FOOD DATABASE -->
+    <script src="foods.js"></script>
 </head>
 
 <body>
@@ -27,19 +30,19 @@
 
             <h2>🔥 DAILY TARGETS</h2>
 
-            <p id="calories">
+            <p id="targetCalories">
                 Calories: -
             </p>
 
-            <p id="protein">
+            <p id="targetProtein">
                 Protein: -
             </p>
 
-            <p id="carbs">
+            <p id="targetCarbs">
                 Carbs: -
             </p>
 
-            <p id="fats">
+            <p id="targetFats">
                 Fats: -
             </p>
 
@@ -54,21 +57,25 @@
 
             <p>
                 🥚 Eggs:
-                <strong id="breakfastEggs">-</strong>
+                <strong id="breakfastEggs">150 g</strong>
             </p>
 
             <p>
                 🍞 Whole Wheat Bread:
-                <strong id="breakfastBread">-</strong>
+                <strong id="breakfastBread">60 g</strong>
             </p>
 
             <p>
                 🍌 Banana:
-                <strong id="breakfastBanana">-</strong>
+                <strong id="breakfastBanana">100 g</strong>
             </p>
 
-            <p id="breakfastInfo">
+            <p id="breakfastCalories">
                 Calories: -
+            </p>
+
+            <p id="breakfastMacros">
+                Protein: - | Carbs: - | Fats: -
             </p>
 
         </div>
@@ -82,21 +89,25 @@
 
             <p>
                 🍗 Chicken Breast:
-                <strong id="lunchChicken">-</strong>
+                <strong id="lunchChicken">150 g</strong>
             </p>
 
             <p>
-                🍚 Rice — raw:
-                <strong id="lunchRice">-</strong>
+                🍚 Rice — RAW:
+                <strong id="lunchRice">80 g</strong>
             </p>
 
             <p>
-                🥗 Vegetables:
-                <strong id="lunchVegetables">-</strong>
+                🥦 Vegetables:
+                <strong id="lunchVegetables">200 g</strong>
             </p>
 
-            <p id="lunchInfo">
+            <p id="lunchCalories">
                 Calories: -
+            </p>
+
+            <p id="lunchMacros">
+                Protein: - | Carbs: - | Fats: -
             </p>
 
         </div>
@@ -110,16 +121,20 @@
 
             <p>
                 🥛 Greek Yogurt:
-                <strong id="snackYogurt">-</strong>
+                <strong id="snackYogurt">200 g</strong>
             </p>
 
             <p>
                 🥜 Almonds:
-                <strong id="snackAlmonds">-</strong>
+                <strong id="snackAlmonds">20 g</strong>
             </p>
 
-            <p id="snackInfo">
+            <p id="snackCalories">
                 Calories: -
+            </p>
+
+            <p id="snackMacros">
+                Protein: - | Carbs: - | Fats: -
             </p>
 
         </div>
@@ -129,4 +144,73 @@
 
         <div class="day">
 
-            <h2>🥩
+            <h2>🥩 DINNER</h2>
+
+            <p>
+                🐟 Tuna:
+                <strong id="dinnerTuna">150 g</strong>
+            </p>
+
+            <p>
+                🥔 Potato:
+                <strong id="dinnerPotato">250 g</strong>
+            </p>
+
+            <p>
+                🥗 Vegetables:
+                <strong id="dinnerVegetables">200 g</strong>
+            </p>
+
+            <p id="dinnerCalories">
+                Calories: -
+            </p>
+
+            <p id="dinnerMacros">
+                Protein: - | Carbs: - | Fats: -
+            </p>
+
+        </div>
+
+
+        <!-- DAILY TOTAL -->
+
+        <div class="day">
+
+            <h2>📊 DAILY TOTAL</h2>
+
+            <p id="totalCalories">
+                Calories: -
+            </p>
+
+            <p id="totalProtein">
+                Protein: -
+            </p>
+
+            <p id="totalCarbs">
+                Carbs: -
+            </p>
+
+            <p id="totalFats">
+                Fats: -
+            </p>
+
+            <p id="targetComparison">
+                -
+            </p>
+
+        </div>
+
+
+        <!-- WATER -->
+
+        <div class="day">
+
+            <h2>💧 WATER</h2>
+
+            <p>
+                Target: 2–3 Liters / Day
+            </p>
+
+            <button onclick="addWater()">
+                💧 DRINK WATER
+            </
