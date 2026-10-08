@@ -1,0 +1,8 @@
+{
+  "appId": "com.bolbol.fitness",
+  "appName": "Bolbol Fitness",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  }
+}
