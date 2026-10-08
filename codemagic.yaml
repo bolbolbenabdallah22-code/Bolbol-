@@ -1,0 +1,19 @@
+workflows:
+  android-build:
+    name: Bolbol Fitness Android
+    environment:
+      node: 22
+      java: 17
+    scripts:
+      - name: Install dependencies
+        script: npm install
+      - name: Install Capacitor CLI
+        script: npm install -g @capacitor/cli
+      - name: Create Android project
+        script: npx cap add android
+      - name: Sync web app
+        script: npx cap sync android
+      - name: Build APK
+        script: cd android && ./gradlew assembleDebug
+    artifacts:
+      - android/app/build/outputs/apk/debug/app-debug.apk
